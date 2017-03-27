@@ -1,0 +1,45 @@
+﻿@model Imdb.ViewModels.NewMovieViewModel
+
+<div class="form-horizontal">
+      <h4> Add </h4>
+    
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Person.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Person.Name, new { htmlAttributes = new { @class = "form-control", @id = "newname" }})
+            @Html.ValidationMessageFor(model => model.Person.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Person.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Person.Sex, new { htmlAttributes = new { @class = "form-control" , @id = "newsex" } })
+            @Html.ValidationMessageFor(model => model.Person.Sex, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Person.Dob, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Person.Dob, new { htmlAttributes = new { @class = "form-control", @id = "newdob" } })
+            @Html.ValidationMessageFor(model => model.Person.Dob, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Person.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Person.Bio, new { @class = "form-control", @id = "newbio", @rows = 10 })
+            @Html.ValidationMessageFor(model => model.Person.Bio, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" onclick="addnewperson()" value="Create" id="NewActor" class="btn btn-default" />
+        </div>
+    </div>
+</div>

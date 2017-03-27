@@ -1,0 +1,117 @@
+﻿@model Imdb.ViewModels.NewMovieViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+<form action="" method="post" enctype="multipart/form-data">
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Movie</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model=>model.Id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "name" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Poster, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Poster, new { @class = "form-control", type = "file", @id = "poster" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div id="imgpreview" class="img-thumbnail " style="display:none">
+                <img class="img-responsive" id="targetImg" />
+                <div class="caption">
+                    <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i> </a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Plot, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Plot, new { @class = "form-control", @id = "plot", @rows = 10 })
+                @Html.ValidationMessageFor(model => model.Plot, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.YearOfRelease, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.YearOfRelease, new { htmlAttributes = new { @class = "form-control", @id = "yor" } })
+                @Html.ValidationMessageFor(model => model.YearOfRelease, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--
+        <div class="form-group">
+                @Html.LabelFor(model => model.Poster, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                     @Html.EditorFor(model => model.Poster, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Poster, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Actors, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(model => model.ActorsId, new MultiSelectList(Model.Actors, "Id", "Person.Name",Model.ActorsId), new { @class = "form-control", @id = "actors" })
+               </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Producer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Producer, new SelectList(Model.Producers, "Id", "Person.Name",Model.Producer), new { @class = "form-control", @id = "producer" })
+               
+
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+        $(document).ready(function () {
+            
+            
+
+
+        });
+
+
+    </script>
+
+
+
+
+}

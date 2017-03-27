@@ -18,16 +18,23 @@ namespace Imdb.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ImdbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public DbSet<Person> People { get; set; }
+        public DbSet<Actor> Actors { get; set; }
+        public DbSet<Producer> Producers { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+
+
+        public ImdbContext()
+            : base("Imdb", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static ImdbContext Create()
         {
-            return new ApplicationDbContext();
+            return new ImdbContext();
         }
+        
     }
 }
