@@ -90,13 +90,23 @@ $(document).ready(function () {
                     
     });
 });
+function pad_with_zeroes(number, length) {
+
+    var my_string = '' + number;
+    while (my_string.length < length) {
+        my_string = '0' + my_string;
+    }
+
+    return my_string;
+
+}
 
 formatdate = function (date) {
     var currentTime = new Date(parseInt(date));
     var month = currentTime.getMonth() + 1;
     var day = currentTime.getDate();
     var year = currentTime.getFullYear();
-    var fdate = month + "/" + day + "/" + year
+    var fdate = pad_with_zeroes(year,4) + "-" + pad_with_zeroes(month,2) + "-" + pad_with_zeroes(day,2);
     return fdate;
 }
 
@@ -149,6 +159,7 @@ var FillForm = function(data)
         $("#a1newsex").val(actor1.Sex);
         $("#a1newbio").val(actor1.Bio);
         $("#a1newdob").val(formatdate(actor1.Dob.substr(6)));
+        //$("#a1newdob").val(actor1.Dob);
 
     }
     else if(actor1) {

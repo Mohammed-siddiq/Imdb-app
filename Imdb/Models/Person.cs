@@ -16,7 +16,7 @@ namespace Imdb.Models
         public string  Sex { get; set; }
 
         [Display(Name = "DOB")]
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Dob { get; set; }
         public string Bio { get; set; }
     }
