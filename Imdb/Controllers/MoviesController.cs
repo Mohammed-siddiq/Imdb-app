@@ -68,10 +68,10 @@ namespace Imdb.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //[Bind(Include = "Id,Name,Plot,YearOfRelease,Poster")]
-        public ActionResult Create([Bind(Exclude ="Person")] NewMovieViewModel m)
+        public ActionResult Create(NewMovieViewModel m)
         {
             List<Actor> actors = new List<Actor>();
-
+            m.Person = new Person();
             for (int i = 0; i < m.ActorsId.Count; i++)
             {
                 Actor a = db.Actors.Find(m.ActorsId[i]);
@@ -194,17 +194,9 @@ namespace Imdb.Controllers
             return RedirectToAction("Index");
         }
 
-        public PartialViewResult NewPerson()
-        {
-            return PartialView("_AddNewPerson");
-        }
+        
 
-        public dynamic GetMovieDetails(string MovieName)
-        {
-            var jsonresult = movieRepository.GetMovieDetails(MovieName);
-            return jsonresult;                
-        }
-
+     
         protected override void Dispose(bool disposing)
         {
             if (disposing)

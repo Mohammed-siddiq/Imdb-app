@@ -15,8 +15,7 @@ namespace Imdb.Repository.Interfaces
         void InsertMovie(NewMovieViewModel Movie);
         void DeleteMovie(int MovieID);
         void UpdateMovie(NewMovieViewModel Movie);
-
-        dynamic GetMovieDetails(string MovieName);
+        
         void Save();
 
 

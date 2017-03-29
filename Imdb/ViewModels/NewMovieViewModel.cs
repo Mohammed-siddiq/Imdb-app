@@ -16,7 +16,7 @@ namespace Imdb.ViewModels
         public List<Actor> Actors { get; set; }
 
         public string PosterPath { get; set; }
-                                           // [Required]
+        [Required]
         public Person Person { get; set; }
         public List<Producer> Producers { get; set; }
 

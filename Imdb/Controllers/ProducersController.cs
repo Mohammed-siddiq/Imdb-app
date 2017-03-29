@@ -64,12 +64,27 @@ namespace Imdb.Controllers
         [HttpPost]
         public ActionResult AddProducer(Person p)
         {
+            bool duplicate = false;
+
             Producer pr = new Producer ();
+            var people = db.People.ToList();
+
             if (ModelState.IsValid)
             {
-                pr.Person = p;
+                foreach (var person in people)
+                {
+                    if (person.Name.ToLower().Equals(p.Name.ToLower()))
+                    {
+                        pr.PersonId = person.Id;
+                        duplicate = true;
+                        break;
+                    }
+                }
+                if (!duplicate)
+                  pr.Person = p;
                 db.Producers.Add(pr);
                 db.SaveChanges();
+
             }
 
             return Json(pr, JsonRequestBehavior.AllowGet);

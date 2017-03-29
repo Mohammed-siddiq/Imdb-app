@@ -63,11 +63,26 @@ namespace Imdb.Controllers
         [HttpPost]
         public ActionResult AddActor(Person p)
         {
+            bool duplicate = false;
             Actor a = new Actor();
+            var people = db.People.ToList();
             if(ModelState.IsValid)
             {
-                a.Person = p;
+                foreach(var person in people)
+                {
+                    if (person.Name.ToLower().Equals(p.Name.ToLower()))
+                    {
+                        a.PersonId = person.Id;
+                        duplicate=true;
+                        break;
+                    }
+                }
+
+                if (!duplicate)
+                    a.Person = p;
+
                 db.Actors.Add(a);
+
                 db.SaveChanges();
             }
 
