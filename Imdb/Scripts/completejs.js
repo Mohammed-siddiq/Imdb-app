@@ -23,7 +23,7 @@ $(document).ready(function () {
 
     });
 
-    $("#actorsandproducers").click(function(){
+    $("#sub").click(function(){
         if($("#addnewproducer").is(":visible"))
             addnewproducer();
         if($("#addnewactor1").is(":visible"))
@@ -32,9 +32,10 @@ $(document).ready(function () {
             addnewactor2();
         if($("#addnewactor3").is(":visible"))
             addnewactor3();
-        $("#actorsandproducers").attr("disabled",true);
-        $("#sub").attr("disabled",false);
-        //  setactor(actorlist);
+        //$("#actorsandproducers").attr("disabled",true);
+        //$("#sub").attr("disabled",false);
+        ////  setactor(actorlist);
+        $("#movieform").submit();
 
     });
     $("#addallactors").click(function () {
