@@ -29,6 +29,7 @@ namespace Imdb.ViewModels
 
         [DisplayName("Year Of Release")]
         [Required]
+        [Range(1700,2030)]
         public int YearOfRelease { get; set; }
 
         public string Plot { get; set; }
