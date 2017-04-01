@@ -11,6 +11,7 @@ $(document).ready(function () {
 
                   
     };
+    
 
 
     $("#poster").change(function () {
@@ -24,13 +25,13 @@ $(document).ready(function () {
     });
 
     $("#sub").click(function(){
-        if($("#addnewproducer").is(":visible"))
-            addnewproducer();
-        if($("#addnewactor1").is(":visible"))
+        if ($("#addnewproducer").is(":visible"))
+                addnewproducer();
+        if ($("#addnewactor1").is(":visible"))
             addnewactor1();
-        if($("#addnewactor2").is(":visible"))
+        if ($("#addnewactor2").is(":visible"))
             addnewactor2();
-        if($("#addnewactor3").is(":visible"))
+        if ($("#addnewactor3").is(":visible"))
             addnewactor3();
         //$("#actorsandproducers").attr("disabled",true);
         //$("#sub").attr("disabled",false);
@@ -285,6 +286,9 @@ var addnewactor3 = function () {
 
 var addnewactor = function (id) {
 
+    if (!validateperson("a" + id))
+        return
+
     nameid = "#a" + id + "newname";
     sexid = "#a" + id + "newsex";
     bioid = "#a" + id + "newbio";
@@ -323,6 +327,8 @@ var addnewactor = function (id) {
 }
 var addnewproducer = function () {
 
+    if (!validateperson("p"))
+        return;
     name = $("#newname").val();
     if(!Existlist(name,"producer"))
     {

@@ -71,7 +71,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Actors, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.ListBoxFor(model => model.ActorsId, new MultiSelectList(Model.Actors, "Id", "Person.Name",Model.ActorsId), new { @class = "form-control", @id = "actors" })
+                @Html.ListBoxFor(model => model.ActorsId, new MultiSelectList(Model.Actors, "Id", "Person.Name",Model.ActorsId), new { @class = "form-control", @id = "actors" , @size = 15 })
                </div>
 
         </div>

@@ -73,7 +73,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Actors, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.ListBoxFor(model => model.ActorsId, new MultiSelectList(Model.Actors, "Id", "Person.Name"), new { @class = "form-control", @id = "actors" })
+                @Html.ListBoxFor(model => model.ActorsId, new MultiSelectList(Model.Actors, "Id", "Person.Name"), new { @class = "form-control", @id = "actors",@size=15 })
                    
                  <button  class="btn btn-link" id="addactors" type="button" onclick="NewActor()">Add New Actor </button>  
                 <br />
@@ -121,13 +121,13 @@
     <div class="form-horizontal">
         <h4> Add Producer </h4>
 
-        <hr />
+        <hr />  
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Person.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Person.Name, new { htmlAttributes = new { @class = "form-control", @id = "newname" } })
-                @Html.ValidationMessageFor(model => model.Person.Name, "", new { @class = "text-danger" })
+                <p class="text-danger" id="newnamep" style="display:none"> Please Enter a valid Name </p> 
             </div>
         </div>
 
@@ -135,15 +135,16 @@
             @Html.LabelFor(model => model.Person.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Person.Sex, new { htmlAttributes = new { @class = "form-control", @id = "newsex" } })
-                @Html.ValidationMessageFor(model => model.Person.Sex, "", new { @class = "text-danger" })
-            </div>
+                <p class="text-danger" id="newsexp" style="display:none">Male/Female/Others </p>
+             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Person.Dob, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Person.Dob, new { htmlAttributes = new { @class = "form-control", @id = "newdob" } })
-                @Html.ValidationMessageFor(model => model.Person.Dob, "", new { @class = "text-danger" })
+                <p class="text-danger" id="newdobp" style="display:none">Select a Valid Dob </p>
+
             </div>
         </div>
 
@@ -175,8 +176,7 @@
             @Html.LabelFor(model => model.Person.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Person.Name, new { htmlAttributes = new { @class = "form-control", @id = "a1newname" } })
-                @Html.ValidationMessageFor(model => model.Person.Name, "", new { @class = "text-danger" })
-            </div>
+                <p class="text-danger" id="newnamea1" style="display:none"> Please Enter a valid Name </p> </div>
         </div>
 
         <div class="form-group">
@@ -184,7 +184,7 @@
             <div class="col-md-10">
 
                 @Html.EditorFor(model => model.Person.Sex, new { htmlAttributes = new { @class = "form-control", @id = "a1newsex" } })
-                @Html.ValidationMessageFor(model => model.Person.Sex, "", new { @class = "text-danger" })
+                <p class="text-danger" id="newsexa1" style="display:none"> Male/Female/Other </p> 
             </div>
         </div>
 
@@ -192,7 +192,8 @@
             @Html.LabelFor(model => model.Person.Dob, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Person.Dob, new { htmlAttributes = new { @class = "form-control", @id = "a1newdob" } })
-                @Html.ValidationMessageFor(model => model.Person.Dob, "", new { @class = "text-danger" })
+                <p class="text-danger" id="newdoba1" style="display:none"> Select a valid DOB. </p> 
+            
             </div>
         </div>
 
@@ -223,15 +224,16 @@
             @Html.LabelFor(model => model.Person.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Person.Name, new { htmlAttributes = new { @class = "form-control", @id = "a2newname" } })
-                @Html.ValidationMessageFor(model => model.Person.Name, "", new { @class = "text-danger" })
-            </div>
+                <p class="text-danger" id="newnamea2" style="display:none"> Please Enter a valid Name </p>    
+            
+             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Person.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Person.Sex, new { htmlAttributes = new { @class = "form-control", @id = "a2newsex" } })
-                @Html.ValidationMessageFor(model => model.Person.Sex, "", new { @class = "text-danger" })
+                <p class="text-danger" id="newsexa2" style="display:none"> Male/Female/others </p> 
             </div>
         </div>
 
@@ -239,7 +241,7 @@
             @Html.LabelFor(model => model.Person.Dob, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Person.Dob, new { htmlAttributes = new { @class = "form-control", @id = "a2newdob" } })
-                @Html.ValidationMessageFor(model => model.Person.Dob, "", new { @class = "text-danger" })
+                <p class="text-danger" id="newdobxa2" style="display:none"> Select a valid DOB. </p> 
             </div>
         </div>
 
@@ -271,7 +273,7 @@
             @Html.LabelFor(model => model.Person.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Person.Name, new { htmlAttributes = new { @class = "form-control", @id = "a3newname" } })
-                @Html.ValidationMessageFor(model => model.Person.Name, "", new { @class = "text-danger" })
+                <p class="text-danger" id="newnamea3" style="display:none"> Enter a valid Name. </p> 
             </div>
         </div>
 
@@ -279,7 +281,7 @@
             @Html.LabelFor(model => model.Person.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Person.Sex, new { htmlAttributes = new { @class = "form-control", @id = "a3newsex" } })
-                @Html.ValidationMessageFor(model => model.Person.Sex, "", new { @class = "text-danger" })
+                <p class="text-danger" id="newsexa3" style="display:none"> Male/Female/others </p> 
             </div>
         </div>
 
@@ -287,7 +289,7 @@
             @Html.LabelFor(model => model.Person.Dob, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Person.Dob, new { htmlAttributes = new { @class = "form-control", @id = "a3newdob" } })
-                @Html.ValidationMessageFor(model => model.Person.Dob, "", new { @class = "text-danger" })
+                <p class="text-danger" id="newdob3" style="display:none">select a Valid DOB. </p> 
             </div>
         </div>
 
@@ -313,6 +315,9 @@
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
         @Scripts.Render("~/Scripts/completejs.js")
-   
+        @Scripts.Render("~/Scripts/validateperson.js")
+
+
+
 
     }

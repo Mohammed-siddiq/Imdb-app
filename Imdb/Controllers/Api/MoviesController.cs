@@ -97,8 +97,16 @@ namespace Imdb.Controllers.Api
             if (json["birthday"] != null && json["birthday"].Length != 0)
             {
                 string date = json["birthday"];
-                string[] Adate = date.Split('-');
-                p.Dob = new DateTime(int.Parse(Adate[0]), int.Parse(Adate[1]), int.Parse(Adate[2]));
+                try
+                {
+                    string[] Adate = date.Split('-');
+                    p.Dob = new DateTime(int.Parse(Adate[0]), int.Parse(Adate[1]), int.Parse(Adate[2]));
+
+                }
+                catch (Exception e)
+                {
+                    p.Dob = DateTime.Parse("1/1/1");
+                }
                 p.Sex = (json["gender"] == 1) ? "Female" : "Male";
 
             }
