@@ -22,7 +22,17 @@ namespace Imdb.Controllers.Api
             string search = "&query=" + MovieName;
             
             dynamic json = Request_api(baseurl, query, apikey,search);
-            var enumerableResults = (json["results"] as IEnumerable<dynamic>).ToList();
+            var enumerableResults = (dynamic)null; 
+            try
+            {
+                 enumerableResults = (json["results"] as IEnumerable<dynamic>).ToList();
+
+            }
+            catch (Exception e)
+            {
+                return null;
+
+            }
             if (enumerableResults == null || enumerableResults.Count == 0)
             {
                 return null;

@@ -23,11 +23,14 @@
         $("#newsex" + id).hide();
 
     }
-
-    if ($(p + "newdob").val().length == 0) {
+    var d = new Date($(p + "newdob").val()).toDateString();
+    console.log(d);
+    console.log($(p + "newdob").val())
+    if (($(p + "newdob").val().length == 0) || ($(p + "newdob").val() == "0001-01-01")) {
         $("#newdob" + id).show();
        valid = false;
     }
+       
     else {
         $("#newdob" + id).hide();
     }

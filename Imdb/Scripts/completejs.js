@@ -80,7 +80,10 @@ $(document).ready(function () {
             dataType: 'json',
             success: function(data) {
                 console.log(data);
-                FillForm(data);
+                if (data)
+                    FillForm(data);
+                else
+                    bootbox.alert("No such movie!");
             },
             error: function (request, status, error) {
                 alert(status + ", " + error);
@@ -352,7 +355,7 @@ var addnewproducer = function () {
                 var o = new Option(person.name, data.Id);
                 $(o).html(person.name);
                 $("#producer").append(o);
-                $("#producer").val(data.Id);
+                $("#producer").val(data.Id).change();
 
             },
 
