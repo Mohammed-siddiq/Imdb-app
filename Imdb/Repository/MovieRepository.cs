@@ -115,7 +115,6 @@ namespace Imdb.Repository
         public void DeleteMovie(int MovieID)
         {
             Movie Movie = context.Movies.Find(MovieID);
-            Movie.Poster = "#";
             context.Movies.Remove(Movie);
         }
 
