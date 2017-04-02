@@ -96,9 +96,13 @@ namespace Imdb.Controllers
                     m.Poster.SaveAs(imagePath);
                     mov.Poster = imageUrl;
                 }
-                else
+                else if (m.PosterPath !=null)
                 {
                     mov.Poster = m.PosterPath;
+                }
+                else
+                {
+                    mov.Poster = "N/A";
                 }
 
 

@@ -88,9 +88,13 @@ namespace Imdb.Repository
                // Movie.Poster.SaveAs(imagePath);
                 movie.Poster = imageUrl;
             }
-            else
+            else if(Movie.PosterPath.Length!=0)
             {
                 movie.Poster = Movie.PosterPath;
+            }
+            else
+            {
+                movie.Poster = "N/A";
             }
             context.Movies.Add(movie);
             // context.Movies.Add(Movie);
