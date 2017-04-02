@@ -180,6 +180,7 @@ namespace Imdb.Controllers
             }
             //Movie movie = db.Movies.Find(id);
             Movie movie = movieRepository.GetMovieByID(id);
+            movie.Poster = "#";
             if (movie == null)
             {
                 return HttpNotFound();
