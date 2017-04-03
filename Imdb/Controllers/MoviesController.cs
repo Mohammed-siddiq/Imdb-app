@@ -120,16 +120,15 @@ namespace Imdb.Controllers
         {
             if (id == null)
             {
+
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //RedirectToAction("Index", "Movies");
             }
             Movie movie = movieRepository.GetMovieByID(id);
             if (movie == null)
             {
                 return HttpNotFound();
             }
-            //var act = (from m in db.Movies
-            //           where m.Id == movie.Id
-            //           select m.Actors).ToList();
             List<int> actids = new List<int>();
             foreach(var actor in movie.Actors)
             {
@@ -143,9 +142,7 @@ namespace Imdb.Controllers
                 YearOfRelease = movie.YearOfRelease,
                 Actors = db.Actors.Include(a => a.Person).ToList(),
                 Producers = db.Producers.Include(a => a.Person).ToList(),
-                //Producer = (from m in db.Movies
-                //            where m.Id == movie.Id
-                //            select m.ProducerId).FirstOrDefault()
+                
                 Producer = movie.ProducerId,
                 ActorsId = actids
 
